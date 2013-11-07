@@ -25,7 +25,7 @@
 
   ready = function() {
     var url;
-    url = 'http://api.trade.gov/articles/search?callback=?';
+    url = 'http://api.trade.gov/trade_articles/search';
     return $.getJSON(url, renderData);
   };
 

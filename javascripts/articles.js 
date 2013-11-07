@@ -5,7 +5,7 @@
     var directive;
     directive = {
       '.title': 'title',
-      '.summary': 'summary',
+      '.content': 'content',
       '.industry': 'industry',
       '.country': 'country'
     };
