@@ -13,8 +13,9 @@
     return $("#article-" + index).show();
   };
 
-  renderData = function(articles) {
-    var article, i, _i, _len, _results;
+  renderData = function(data) {
+    var articles, article, i, _i, _len, _results;
+    articles = data.results;
     _results = [];
     for (i = _i = 0, _len = articles.length; _i < _len; i = ++_i) {
       article = articles[i];
@@ -25,7 +26,7 @@
 
   ready = function() {
     var url;
-    url = 'http://api.trade.gov/trade_articles/search';
+    url = 'http://api.trade.gov/trade_articles/search?callback=?';
     return $.getJSON(url, renderData);
   };
 
