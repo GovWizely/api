@@ -4,10 +4,23 @@
   renderArticle = function(index, article) {
     var directive;
     directive = {
-      '.title': 'title',
+      '.id': 'id',
       '.content': 'content',
-      '.industry': 'industry',
+      '.pub_date': 'pub_date',
+      '.title': 'title'
+      '.update_date': 'update_date'
+      '.evergreen': 'evergreen'
+      '.content_type': 'content_type'
+      '.export_phase': 'export_phase'
+      '.industry': 'industry'
+      '.topic': 'topic'
+      '.subtopic': 'subtopic'
+      '.trade_region': 'trade_region'
+      '.geo_region': 'geo_region'
+      '.geo_subregion': 'geo_subregion'
       '.country': 'country'
+      '.keyword': 'keyword'
+      
     };
     $("#article-" + index).render(article, directive);
     return $("#article-" + index).show();
