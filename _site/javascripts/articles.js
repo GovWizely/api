@@ -1,25 +1,13 @@
-(function() {
+  (function() {
   var ready, renderArticle, renderData;
 
   renderArticle = function(index, article) {
     var directive;
     directive = {
-	  '.id': 'id',
-      '.content': 'content',
-      '.pub_date': 'pub_date',
-      '.title': 'title',
-      '.update_date': 'update_date',
-      '.evergreen': 'evergreen',
-      '.content_type': 'content_type',
-      '.export_phase': 'export_phase',
-      '.industry': 'industry',
-      '.topic': 'topic',
-      '.subtopic': 'subtopic',
-      '.trade_region': 'trade_region',
-      '.geo_region': 'geo_region',
-      '.geo_subregion': 'geo_subregion',
-      '.country': 'country',
-      '.keyword': 'keyword'
+	  '.title': 'title',
+	  '.pub_date': 'pub_date',
+      '.content': 'content'
+      
     };
     $("#article-" + index).render(article, directive);
     return $("#article-" + index).show();
