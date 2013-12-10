@@ -6,7 +6,7 @@
     <title>API</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>  
+    <script src="javascripts/scale.fix.js"></script>
    	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="http://pure.github.io/pure/libs/pure.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -18,45 +18,50 @@
     <div class="wrapper">
      <header class="without-description"><h1>Articles</h1>
      </header>
-	 <section>
-	 <div class="test">
-		<div id="article-" class="article">
-			<dt>Title</dt> <dd class="title"></dd>
-			<dt>Publication Date</dt> <dd class="pub_date"></dd>
-			<dt>Content</dt> <dd class="content"></dd>
-			</br>
-		</div>
-	</div>
-    <script>
-    
-		var data = {results:[
-				{title:'Factoring and Forfaiting', 
-				pub_date:'2012-12-20', 
-				content: 'A factor, i.e. a commercial bank or a...'}, 
-				
-				{title:'Federal Grant Programs for Exporters', 
-				pub_date:'2012-12-20', 
-				content: 'The federal government offers a number of...'},
-				
-				{title:'Export Loan Programs', 
-				pub_date:'2012-12-20', 
-				content: 'The U.S. Government offers four...'}
-			]},
-			dir = {
-				'.article':{ 
-					'article<-results':{ 
-						'@title+':'article.pos', 
-						'.title': 'article.title',
-						'.pub_date': 'article.pub_date',
-						'.content': 'article.content',
-					}
-				}
-			};
-			
-		$('.test').render(data, dir);
+     <div class="articles">
+       <dl class="article">
+
+          <dt>ID</dt>
+          <dd class="id"></dd>
+          <dt>Title</dt>
+          <dd class="title"></dd>
+          <dt>Publication Date</dt>
+          <dd class="pub_date"></dd>
+          <dt>Content</dt>
+          <dd class="content"></dd>
+          
+      </dl>
+    </div>
+<script>
+(function() {
+  var ready, renderData;
+  renderData = function(data) {
+    var articles, article, i, _i, _len, _results;
+    articles = data.results;
+    directive = {
+      '.article': {
+        'article <- articles': {
+          '.title': 'article.title',
+          '.pub_date': 'article.pub_date',
+          '.content': 'article.content',
+        }
+      }
+    };
+    rfn = $p('.articles').compile(directive);
+    return $p('.articles').render({ articles: articles }, directive);
+  };
+
+  ready = function() {
+    var url;
+    url = 'http://api.trade.gov/trade_articles/search?callback=?';
+    return $.getJSON(url, renderData);
+  };
+
+  $(document).ready(ready);
+
+}).call(this);
 		
 	 </script>
-     </section>
      </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
   </body>
